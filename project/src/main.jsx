@@ -1,53 +1,54 @@
-import Feacture from './Pricing.jsx'
-import Cart from './Cart.jsx'
-import { createRoot } from 'react-dom/client'
-import Support from './Feacture.jsx'
-import App from './App.jsx'
-import Sign from './Sign.jsx'
-import './index.css'
-import Login from './Login.jsx'
-import { createBrowserRouter ,RouterProvider}  from "react-router-dom"
-import Pricing from './Pricing.jsx'
-import Singleproduct from './SingleProduct.jsx'
+import Feature from './Pricing.jsx'; // Correcting the typo from 'Feacture'
+import Cart from './Cart.jsx';
+import { createRoot } from 'react-dom/client';
+import Support from './Support.jsx'; // Assuming Support is a different component
+import App from './App.jsx';
+import Sign from './Sign.jsx';
+import './index.css';
+import { Provider } from 'react-redux';
+import { store } from './utility/store';
+import Login from './Login.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Pricing from './Pricing.jsx';
+import SingleProduct from './SingleProduct.jsx'; // Capitalizing to match the import name
 
-
-const router=createBrowserRouter([
+const router = createBrowserRouter([
   {
-    path:'/',
-    element:<App></App>
-
-  },{
-    path:'/feacture',
-    element:<Feacture></Feacture>
-  },{
-    path:'/support',
-    element:<Support></Support>
-  }
-  ,{
-    path:'/pricing',
-    element:<Pricing></Pricing>
+    path: '/',
+    element: <App />,
   },
   {
-    path:'/cart',
-    element:<Cart></Cart>
+    path: '/feature', // Adjusted the route to match 'Feature'
+    element: <Feature />,
   },
   {
-    path:'/product/:id',
-    element:<Singleproduct></Singleproduct>
-  }
-
-  ,{
-    path:'/login',
-    element:<Login></Login>
-
-  },{
-    path:'/sign',
-    element:<Sign></Sign>
-
-  }
-
-])
+    path: '/support',
+    element: <Support />, // If Support is a different component
+  },
+  {
+    path: '/pricing',
+    element: <Pricing />,
+  },
+  {
+    path: '/cart',
+    element: <Cart />,
+  },
+  {
+    path: '/product/:id',
+    element: <SingleProduct />, // Corrected to match the import name
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/sign',
+    element: <Sign />,
+  },
+]);
 
 createRoot(document.getElementById('root')).render(
-<RouterProvider router={router}/>
-)
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+);

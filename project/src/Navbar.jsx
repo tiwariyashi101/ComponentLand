@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
 import { FaShoppingCart } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Navbar=()=>{
+
+  const cartitem=useSelector((state)=>state.cart.items)
   return (
 
 
@@ -26,7 +29,7 @@ const Navbar=()=>{
         <Link to='/pricing'> Pricing</Link>
       <Link to='/feacture'>Features</Link>
        <Link to='/support'>Support</Link>
-       <Link to='/cart'> <FaShoppingCart />Cart</Link>
+       <Link to='/cart'> <FaShoppingCart />Cart {cartitem.length}</Link>
         <li class="text-gray-600 md:mr-12 hover:text-blue-600">
         <Link  class="rounded-md border-2 border-blue-600 px-6 py-1 font-medium text-blue-600 transition-colors hover:bg-blue-600 hover:text-white" to='/login'>Login</Link>
         </li>

@@ -51,11 +51,24 @@ const SingleProduct = () => {
           <div className="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
             <div className="lg:col-span-3 lg:row-end-1">
               <div className="lg:flex lg:items-start">
-                <div className="lg:order-2 lg:ml-5">
+                {/* <div className="lg:order-2 lg:ml-5">
                   <div className="max-w-xl overflow-hidden rounded-lg">
                     <img className="h-full w-full max-w-full object-cover" src={thumbnail} alt={title} />
                   </div>
-                </div>
+                </div> */}
+
+<div className="lg:order-2 lg:ml-5">
+  <div className="max-w-xl overflow-hidden rounded-lg">
+    <img
+      className="h-full w-full max-w-full object-cover transform transition-transform duration-300 hover:scale-110 hover:translate-x-2 hover:translate-y-2"
+      src={thumbnail}
+      alt={title}
+    />
+  </div>
+</div>
+
+
+
 
                 <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
                   <div className="flex flex-row items-start lg:flex-col">
@@ -67,6 +80,12 @@ const SingleProduct = () => {
                 </div>
               </div>
             </div>
+
+
+            <div className="mt-10 w-96 shadow-lg">
+                <h2 className="text-lg font-medium text-gray-900">Product Details</h2>
+                <p className="mt-4 text-sm text-gray-600">{description}</p>
+              </div>
 
             <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
               <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">{title}</h1>
@@ -148,10 +167,7 @@ const SingleProduct = () => {
                 </li>
               </ul>
 
-              <div className="mt-10">
-                <h2 className="text-lg font-medium text-gray-900">Product Details</h2>
-                <p className="mt-4 text-sm text-gray-600">{description}</p>
-              </div>
+             
             </div>
           </div>
         </div>

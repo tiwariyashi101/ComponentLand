@@ -1,14 +1,22 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addCart } from "./utility/cartSlice";
 const Card = ({ obj }) => {
+  const dispatch=useDispatch()
  const navigate=useNavigate()
 const handClick=()=>{
 navigate(`/product/${id}`)
+
+}
+const handlestop=(e)=>{
+  e.stopPropagation()
+  dispatch(addCart(obj))
 }
 
   const { title, price, images, rating,id } = obj;
 
   return (
-    <div className="relative m-10 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-md" onClick={handClick}>
+    <div className="relative m-10 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-md hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300" onClick={handClick}>
       <a href="#">
         <img
           src={images}
@@ -82,7 +90,7 @@ navigate(`/product/${id}`)
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-            Add to cart
+           <button onClick={handlestop}>Add to cart</button> 
           </a>
         </div>
       </div>
