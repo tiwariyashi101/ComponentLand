@@ -1,19 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart, incrementQuantity, decrementQuantity } from "./utility/cartSlice";
+import { clearCart, incrementQuantity, decrementQuantity } from "./utility/CartSlice.jsx"; 
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
   const handleClear = () => {
-    dispatch(clearCart());
+    if (window.confirm('Are you sure you want to clear the cart?')) {
+      dispatch(clearCart());
+    }
   };
 
   const handleIncrement = (itemId) => {
+    console.log('Incrementing:', itemId); // Debugging
     dispatch(incrementQuantity(itemId));
   };
 
   const handleDecrement = (itemId) => {
+    console.log('Decrementing:', itemId); // Debugging
     dispatch(decrementQuantity(itemId));
   };
 
@@ -46,16 +50,16 @@ const Cart = () => {
                         <div className="sm:col-gap-5 sm:grid sm:grid-cols-2">
                           <div className="pr-8 sm:pr-5">
                             <p className="text-base font-semibold text-gray-900">
-                              {item.title} // Assuming 'title' is a property in your item
+                              {item.title}
                             </p>
                             <p className="mx-0 mt-1 mb-0 text-sm text-gray-400">
-                              {item.size} // Assuming 'size' is a property in your item
+                              {item.size}
                             </p>
                           </div>
 
                           <div className="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
                             <p className="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">
-                              ${item.price} // Assuming 'price' is a property in your item
+                              ${item.price}
                             </p>
 
                             <div className="sm:order-1">
@@ -79,28 +83,6 @@ const Cart = () => {
                             </div>
                           </div>
                         </div>
-
-                        <div className="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
-                          <button
-                            type="button"
-                            className="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900"
-                          >
-                            <svg
-                              className="h-5 w-5"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M6 18L18 6M6 6l12 12"
-                              ></path>
-                            </svg>
-                          </button>
-                        </div>
                       </div>
                     </li>
                   ))}
@@ -122,4 +104,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
