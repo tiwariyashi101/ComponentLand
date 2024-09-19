@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addCart } from "./utility/cartSlice";
+import { addCart } from "./utility/CartSlice";
 const Card = ({ obj }) => {
   const dispatch=useDispatch()
  const navigate=useNavigate()
